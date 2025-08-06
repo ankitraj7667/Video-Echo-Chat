@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Video Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Video Echo Chat</h2>
+    <div id="room-controls" class="card">
+        <button id="createRoomBtn">Create Room</button>
+        <div id="createdRoom" style="display:none;">
+            <p>Room ID: <span id="roomIdDisplay"></span></p>
+            <small>Share this ID with your teammate!</small>
+        </div>
+        <hr>
+        <input type="text" id="roomInput" placeholder="Enter Room ID to Join">
+        <button onclick="joinRoom()">Join Room</button>
+    </div>
+    <div id="video-container" class="card" style="display:none;">
+        <video id="localVideo" autoplay playsinline muted></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+        <div id="roomInfo"></div>
+        <button id="leaveBtn" style="margin-top:10px;">Leave Room</button>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
