@@ -5,24 +5,102 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Video Echo Chat</h2>
-    <div id="room-controls" class="card">
-        <button id="createRoomBtn">Create Room</button>
+    <h1 class="futuristic-title">🚀 Video Echo Chat</h1>
+    <div id="room-controls" class="futuristic-card">
+        <button id="createRoomBtn" class="futuristic-btn">Create Room</button>
+        <div id="namePrompt" style="display:none;">
+            <input type="text" id="userNameInput" placeholder="Enter your name" class="futuristic-input">
+            <button id="confirmNameBtn" class="futuristic-btn">Continue</button>
+        </div>
         <div id="createdRoom" style="display:none;">
-            <p>Room ID: <span id="roomIdDisplay"></span></p>
-            <small>Share this ID with your teammate!</small>
+            <p>Room ID: <span id="roomIdDisplay" class="futuristic-code"></span></p>
+            <p>Welcome, <span id="userNameDisplay"></span>!</p>
+            <small>Share this ID with your teammate to join the team.</small>
         </div>
         <hr>
-        <input type="text" id="roomInput" placeholder="Enter Room ID to Join">
-        <button onclick="joinRoom()">Join Room</button>
+        <input type="text" id="roomInput" placeholder="Enter Room ID to Join" class="futuristic-input">
+        <button onclick="joinRoom()" class="futuristic-btn">Join Room</button>
     </div>
-    <div id="video-container" class="card" style="display:none;">
-        <video id="localVideo" autoplay playsinline muted></video>
-        <video id="remoteVideo" autoplay playsinline></video>
-        <div id="roomInfo"></div>
-        <button id="leaveBtn" style="margin-top:10px;">Leave Room</button>
+    <div id="video-container" class="futuristic-card" style="display:none;">
+        <video id="localVideo" autoplay playsinline muted class="futuristic-video"></video>
+        <video id="remoteVideo" autoplay playsinline class="futuristic-video"></video>
+        <div id="roomInfo" class="futuristic-info"></div>
+        <button id="leaveBtn" class="futuristic-btn" style="margin-top:10px;">Leave Room</button>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f2027, #2c5364);
+            color: #fff;
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .futuristic-title {
+            font-size: 2.5rem;
+            margin-top: 2rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px #00e6ff, 0 0 5px #fff;
+        }
+        .futuristic-card {
+            background: rgba(44, 83, 100, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 2rem;
+            margin: 2rem 0;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .futuristic-btn {
+            background: linear-gradient(90deg, #00e6ff, #0072ff);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            box-shadow: 0 0 10px #00e6ff;
+            transition: background 0.3s;
+        }
+        .futuristic-btn:hover {
+            background: linear-gradient(90deg, #0072ff, #00e6ff);
+        }
+        .futuristic-input {
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: none;
+            margin: 0.5rem 0;
+            width: 80%;
+            font-size: 1rem;
+        }
+        .futuristic-code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.2rem;
+            background: #222;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            color: #00e6ff;
+            letter-spacing: 2px;
+        }
+        .futuristic-video {
+            width: 90%;
+            max-width: 320px;
+            border-radius: 16px;
+            margin: 0.5rem 0;
+            box-shadow: 0 0 20px #00e6ff44;
+        }
+        .futuristic-info {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: #00e6ff;
+        }
+    </style>
 </body>
 </html>

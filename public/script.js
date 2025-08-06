@@ -9,17 +9,36 @@ const config = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
 
 const localVideo = document.getElementById("localVideo");
 const remoteVideo = document.getElementById("remoteVideo");
+
 const createRoomBtn = document.getElementById("createRoomBtn");
 const createdRoomDiv = document.getElementById("createdRoom");
 const roomIdDisplay = document.getElementById("roomIdDisplay");
 const leaveBtn = document.getElementById("leaveBtn");
 const roomInfo = document.getElementById("roomInfo");
+const namePrompt = document.getElementById("namePrompt");
+const userNameInput = document.getElementById("userNameInput");
+const confirmNameBtn = document.getElementById("confirmNameBtn");
+const userNameDisplay = document.getElementById("userNameDisplay");
+
+let userName = "";
 
 createRoomBtn.onclick = () => {
+    namePrompt.style.display = "block";
+    createRoomBtn.style.display = "none";
+};
+
+confirmNameBtn.onclick = () => {
+    userName = userNameInput.value.trim();
+    if (!userName) {
+        alert("Please enter your name.");
+        return;
+    }
     roomId = generateRoomId();
     isCreator = true;
     roomIdDisplay.textContent = roomId;
+    userNameDisplay.textContent = userName;
     createdRoomDiv.style.display = "block";
+    namePrompt.style.display = "none";
     document.getElementById("roomInput").value = roomId;
 };
 
